@@ -1,9 +1,9 @@
 import Link from "next/link";
-import bg from '../img/fd4.jpeg'
-import ImgSobre from '../img/fd5.jpeg'
+import bg from '../../img/fd4.jpeg'
+import ImgSobre from '../../img/fd5.jpeg'
 import Image from "next/image";
 import { ClipboardEdit, ShieldCheck, QrCode, Search , MapPinned, BadgeCheck, Eye, ShieldPlus, ArrowRight, Users2, HousePlus, MapPin, ArrowLeftCircle, ArrowRightCircle} from 'lucide-react';
-import SectionProducto from "./components/sectionProducto";
+import SectionProducto from "../components/sectionProducto";
 
 
 const cardPassos = [

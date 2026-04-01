@@ -4,11 +4,11 @@ import { useRouter } from 'next/navigation';
 import {z} from 'zod';
 import {zodResolver} from '@hookform/Resolvers/zod';
 import toast from 'react-hot-toast';
-import vejetable from '../../../img/vegetables.jpg';
 import Image from 'next/image';
-import { HiOutlineCheck, HiArrowLeft, HiOutlinePhone } from "react-icons/hi";
-import { LuUser, LuMail, LuLock } from "react-icons/lu";
+import { HiOutlineCheck, HiArrowLeft, HiOutlinePhone} from "react-icons/hi";
+import { LuUser, LuMail, LuLock, LuUserPlus } from "react-icons/lu";
 import Link from 'next/link';
+import wap from '../../../img/wap.jpeg';
 
 
 const sanitizeName = (value:string)=>{
@@ -95,15 +95,16 @@ async function handleCadastro(data:cadastroData){
   
 }
     return(
-    <div className="flex  h-screen gap-12  bg-zinc-50">
+    <div className="flex  h-screen bg-[#F5EBD2]/50 gap-12">
          <div className="hidden md:flex w-1/2 h-full relative overflow-hidden">
            {/*<div className="absolute inset-0">*/} 
-                <Image  src={vejetable} alt=" ImagemDeVejetal" fill priority className='object-cover' />
+                <Image  src={wap} alt=" ImagemDeVejetal" fill priority className='object-cover' />
             {/** </div>*/}
          
-            <div className="absolute flex flex-col items-center justify-center bg-green-600/50 inset-0 text-white ">
+        
+            <div className="absolute flex flex-col items-center justify-center bg-green-700/50  inset-0 text-white ">
+            <div className="flex rounded-lg items-center justify-center border bg-white/50 text-white mb-4 p-4"><LuUserPlus size={40}/></div>
               <h2 className=" text-2xl font-semibold">Junte-se à revolução da  <br />  rastreabilidade alimentar</h2>
-              
               <div className="flex flex-col ml-10 gap-1 mt-2">
                 {
                 contentOverlay.map((content, index) => (
@@ -120,21 +121,23 @@ async function handleCadastro(data:cadastroData){
          </div>
  
       
-        <div className="flex flex-col md:w-1/2 w-full h-full items-center justify-center p-6 overflow-y-auto">
+        <div className="flex flex-col md:w-1/2 w-full h-full items-center justify-center p-6 overflow-y-auto ">
       
-            <div className="flex flex-col space-y-4  mr-70 ">
+            <div className="flex flex-col space-y-4  mr-70 mt-18 ">
                 <Link href={'/'} >
-                <button className="text-zinc-600 text-xs flex gap-1 cursor-pointer mt-10"><HiArrowLeft size={18} />Voltar ao início</button>
+                <button className="text-zinc-600 text-xs flex gap-1 cursor-pointer "><HiArrowLeft size={18} />Voltar ao início</button>
                 </Link> 
                 
                 <div className="flex gap-2 items-center">
-                    <button className="text-2xl rounded-lg bg-green-600 text-white text-center w-8 h-8">O</button>
-                    <p className="font-semibold text-lg text-zinc-700">Origem certa</p>
+                    <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xl">O</span>
+                </div>
+            <span className="text-xl font-bold text-gray-800">Origem<span className="text-green-600">Certa</span></span>
                     
                 </div>
             </div>
-            <div className="w-full max-w-md mx-auto flex flex-col gap-4 rounded-xl shadow-2xl hover:shadow-3xl transition p-6 mt-6 bg-white">
-                <div className="flex flex-col space-y-2 mb-4">
+            <div className="w-full max-w-md mx-auto flex flex-col gap-4 rounded-xl shadow-2xl hover:shadow-3xl transition p-6 mt-4 bg-white">
+                <div className="flex flex-col space-y-2 mb-2">
                     <h2 className="text-xl font-semibold">Criar nova conta</h2>
                     <p className="text-xs text-zinc-600">Preencha os dados para se registar no sistema</p>
                 </div>
@@ -144,9 +147,8 @@ async function handleCadastro(data:cadastroData){
                         <div className="relative">
                             <LuUser className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400'  size={14}/>
                             <input {...register("nome")} type="text" disabled={isSubmitting} placeholder='Seu nome completo' className="text-xs w-full h-10  rounded-lg pl-8 bg-gray-50 outline-green-600 border border-gray-200" />
-                            {errors.nome && <p className="text-xs text-red-600">{errors.nome.message}</p>} 
                         </div>
-                        
+                         {errors.nome && <p className="text-xs text-red-600">{errors.nome.message}</p>} 
                     </div>
                     <div className="grid grid-cols-2 gap-2">
                         <div className="flex flex-col space-y-1 mt-1">
@@ -154,9 +156,8 @@ async function handleCadastro(data:cadastroData){
                             <div className="relative">
                                 <HiOutlinePhone className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' size={14}/>
                                  <input {...register("telefone")} type="text" disabled={isSubmitting} className="text-xs w-full h-10  rounded-lg pl-8 bg-gray-50 outline-green-600 border border-gray-200 " placeholder='+244 945 673 852'/>
-                                 {errors.telefone && <p className="text-xs text-red-600">{errors.telefone.message}</p>} 
                             </div>
-
+                             {errors.telefone && <p className="text-xs text-red-600">{errors.telefone.message}</p>} 
                             
                         </div>
                          <div className="flex flex-col space-y-1 mt-1">
@@ -164,9 +165,8 @@ async function handleCadastro(data:cadastroData){
                             <div className="relative">
                                 <LuMail className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' size={14}/>
                                 <input {...register("email")} type="email" disabled={isSubmitting} className="text-xs w-full h-10  rounded-lg pl-8 bg-gray-50 outline-green-600 border border-gray-200 "   placeholder='mutoocamaria@gmail.com'/>
-                                {errors.email && <p className="text-xs text-red-600">{errors.email.message}</p>} 
                             </div>
-                            
+                             {errors.email && <p className="text-xs text-red-600">{errors.email.message}</p>} 
                         </div>
                     </div>
                     <div className="flex flex-col space-y-1 mt-2">
@@ -174,9 +174,8 @@ async function handleCadastro(data:cadastroData){
                         <div className="relative">
                             <LuLock className='absolute left-3 top-1/2 -translate-y-1/2 text-gray-400' size={14}/>
                             <input {...register("password")} type="password" disabled={isSubmitting} className="text-xs w-full h-10  rounded-lg pl-8 bg-gray-50 outline-green-600 border border-gray-200"   placeholder='••••••••' />
-                            {errors.password && <p className="text-xs text-red-600">{errors.password.message}</p>} 
-
                         </div>
+                          {errors.password && <p className="text-xs text-red-600">{errors.password.message}</p>} 
                         <p className="text-zinc-700 text-xs">Mínimo 8 caracteres: maiúscula, minúscula, número e caractere especial como:!"$%/"&</p>
                     </div>
                     <div className="flex flex-col space-y-1 mt-2">

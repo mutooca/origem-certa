@@ -22,7 +22,7 @@ export function Header(){
 
         
         <div className="flex items-center gap-4">
-        <Link href="/login" className="text-gray-600 font-semibold hover:text-green-600">Entrar</Link>
+        <Link href="/entrar" className="text-gray-600 font-semibold hover:text-green-600">Entrar</Link>
         <Link 
             href="/cadastro" 
             className="bg-green-600 text-white px-5 py-2 rounded-full font-medium hover:bg-green-700 transition-all shadow-md shadow-green-200">

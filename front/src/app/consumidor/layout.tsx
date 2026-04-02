@@ -8,11 +8,11 @@ export default function AuthLayout({ children }:{ children: ReactNode }) {
        <HeaderConsumidor/>
 
       <div className="flex flex-1 pt-16">
-        <aside className="w-64 bg-white border-r border-gray-200">
+        <aside className="hidden md:block w-64 bg-white border-r border-gray-200">
            <MenuLateral/>
         </aside>
 
-          <main className="flex-1 p-6 bg-gray-50">
+          <main className="flex-1 p-4 md:p-6 bg-gray-50 w-full">
             {children} 
           </main>
 
